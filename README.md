@@ -1,4 +1,4 @@
-# autorouter
+# Autorouter
 
 An automatic route finder and optimizer for Metroid®/Zelda®/Vania-type games.
 
