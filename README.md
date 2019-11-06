@@ -1,13 +1,13 @@
 # autorouter
 
-An automatic route finder and optimizer for MetroidⓇ/ZeldaⓇ/Vania-type games.
+An automatic route finder and optimizer for Metroid®/Zelda®/Vania-type games.
 
 ## Overview
 
 ### What type of games?
 
 There's a genre of action-role-playing-games that's sometimes referred to as
-Metroidvanias. It also includes Legend of ZeldaⓇ series games. The key aspect of
+Metroidvanias. It also includes Legend of Zelda® series games. The key aspect of
 these game worlds are that they are initially quite closed; as players explore
 and complete objectives, they find items that allow access to new areas of the
 game world. The entrances to these new areas are often found in already explored
