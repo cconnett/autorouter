@@ -7,6 +7,8 @@ import elkai
 import networkx
 import numpy as np
 
+INFINITY = 2**26
+
 
 def LoadItemLocations():
   ret = {}
@@ -18,10 +20,11 @@ def LoadItemLocations():
 
 def LoadMap():
   themap = networkx.drawing.nx_pydot.read_dot('data/AgentA/map.dot')
+  themap = networkx.DiGraph(themap)
   for edge in themap.edges:
     if themap.edges[edge].get('dir') != 'forward':
-      u, v, _ = edge
-      themap.add_edge(v, u)
+      u, v = edge
+      themap.add_edge(v, u, **themap.edges[edge])
   return themap
 
 
@@ -51,24 +54,27 @@ def main(unused_argv):
   items[0], items[start] = items[start], items[0]
   items[-1], items[end] = items[end], items[-1]
 
-  apsp = dict(networkx.all_pairs_shortest_path_length(themap))
+  apsp = dict(
+      networkx.algorithms.shortest_paths.weighted
+      .all_pairs_bellman_ford_path_length(
+          themap, weight=lambda _1, _2, attrs: int(attrs.get('weight', 1))))
   item_precedence = dict(networkx.all_pairs_shortest_path_length(dependencies))
   costs = np.zeros((len(items), len(items)), int)
   for i in range(len(items)):
     for j in range(len(items)):
       if i == j:
-        costs[i, j] = -1
+        costs[i, j] = INFINITY
         continue
       try:
         cost = apsp[where[items[i]]][where[items[j]]]
-        costs[i, j] = (cost if cost > 0 else -1)
+        costs[i, j] = (cost if cost > 0 else INFINITY)
         if items[i] == 'end':
-          costs[i, j] = -1
+          costs[i, j] = INFINITY
         if items[i] == 'start':
           continue
         if (items[i] in item_precedence and
             items[j] not in item_precedence[items[i]]):
-          costs[i, j] = -1
+          costs[i, j] = INFINITY
       except:
         print(items[i], items[j])
         print(where[items[i]], where[items[j]])
