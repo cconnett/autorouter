@@ -25,14 +25,13 @@ def LoadMap():
   return themap
 
 
-
 def main(unused_argv):
   dependencies = networkx.drawing.nx_pydot.read_dot(
       'data/AgentA/dependencies.dot')
   themap = LoadMap()
   where = LoadItemLocations()
 
-  items = set(dependencies.nodes)
+  items = set(dependencies.nodes) | set(where.keys())
   locations = set(themap.nodes)
   items -= locations
 
@@ -46,16 +45,39 @@ def main(unused_argv):
     raise ValueError("The following locations aren't on the map:\n" + '\n'.join(
         f'  {l}' for l in sorted(unknown_locations)))
 
+  items = list(items)
+  start = items.index('start')
+  end = items.index('end')
+  items[0], items[start] = items[start], items[0]
+  items[-1], items[end] = items[end], items[-1]
+
   apsp = dict(networkx.all_pairs_shortest_path_length(themap))
-  nodes = list(themap.nodes)
-  costs = np.zeros((len(nodes), len(nodes)), int)
-  for u, path_dict in apsp.items():
-    for v, cost in path_dict.items():
-      costs[nodes.index(u), nodes.index(v)] = cost if cost > 0 else -1
+  item_precedence = dict(networkx.all_pairs_shortest_path_length(dependencies))
+  costs = np.zeros((len(items), len(items)), int)
+  for i in range(len(items)):
+    for j in range(len(items)):
+      if i == j:
+        costs[i, j] = -1
+        continue
+      try:
+        cost = apsp[where[items[i]]][where[items[j]]]
+        costs[i, j] = (cost if cost > 0 else -1)
+        if items[i] == 'end':
+          costs[i, j] = -1
+        if items[i] == 'start':
+          continue
+        if (items[i] in item_precedence and
+            items[j] not in item_precedence[items[i]]):
+          costs[i, j] = -1
+      except:
+        print(items[i], items[j])
+        print(where[items[i]], where[items[j]])
+        import pdb
+        pdb.post_mortem()
 
   tour = elkai.solve_int_matrix(costs)
   for index in tour:
-    print(nodes[index])
+    print(items[index])
 
 
 if __name__ == '__main__':

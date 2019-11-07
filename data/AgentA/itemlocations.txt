@@ -1,5 +1,7 @@
 C4:den
 account:drawer
+detonate:office
+bombset:poolside
 ammo:vault
 arrowcode:spyroom
 battery:lhbottom
