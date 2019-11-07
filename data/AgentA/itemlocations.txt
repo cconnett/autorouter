@@ -1,106 +1,150 @@
-"""Locations of items."""
-placements = {
-    'account': 'drawer',
-    'battery': 'lhbottom',
-    'blue52': 'towerfence',
-    'cheese': 'tvroom',
-    'crank': 'atrium',
-    'clockdiamond': 'office',
-    'dropnet': 'nest',
-    'elevatoraccess': 'lhbottom',
-    'emptycan': 'log',
-    'fish': 'boat',
-    'fullbattery': 'lab',
-    'fullcan': 'log',
-    'fullglass': 'bathroom',
-    'fullpail': 'bathroom',
-    'fuse': 'electric',
-    'glass': '',
-    'greenled': 'stoop',
-    'hacking': 'upstairs',
-    'hammer': 'garage',
-    'ladderlever': 'lhtop',
-    'lighter': 'fireplace',
-    'mailcard': 'walkway',
-    'metalkey': 'atrium',
-    'oilcan': 'garage',
-    'pail': 'lab',
-    'reversefan': 'fancatwalk',
-    'rope': 'lhmid',
-    'ruby': 'bedroom',
-    'screwdriver': 'office',
-    'statue2': 'log',
-    'telescope': 'saferoom',
-    'toolkey': 'trevor5',
-    'trianglekey': 'bathroom',
-    'vroom': 'boat',
-    'waterhandle': 'poolside',
-    'wateroff1': 'water',
-    'wateroff2': 'water',
-    'wateron1': 'water',
-    'wateron2': 'water',
-    'wedge1': 'atrium',
-    'wedge2': 'observatory',
-    'wedge3': 'poolfilter',
-    'wedge4': 'poolside',
-    'wedge5': 'drain',
-    'wedge6': 'den',
-    'wedge7': 'den',
-    'wedge8': '???',
-    'yellowcube': 'observatory',
-    'ammo': 'vault',
-    'crowbar': 'vault',
-    'spadekey': 'vault',
-    'boltcutters': 'sub',
-    'sabotagekit': 'lhtop',
-    'stopruby': 'finalbeach',
-    'cell1': 'rightsocket',
-    'chip': 'leftsocket',
-    'circlecode': 'engine',
-    'chisel': 'grate',
-    'brick': 'brickwall',
-    'redkey': 'frontpaneldown',
-    'redlock': 'frontpanelup',
-    'pegboardplacement': 'traproom',
-    'pegs': 'leftpanel',
-    'clearance1': 'security1',
-    'clearance2': 'security2',
-    'clearance3': 'security3',
-    'clearance4': 'security4',
-    'clearance5': 'security5',
-    'code1': 'blueprint',
-    'code2': 'blueprint',
-    'code3': 'blueprint',
-    'code4': 'blueprint',
-    'code5': 'blueprint',
-    'transmit': 'commpanel',
-    'starcrank': 'leftpanel',
-    'lens': 'bedroom',
-    'thumbdrive': 'mail',
-    'pencil': 'briefcase',
-    'cd': 'toolbox',
-    'scopecode': 'observatory',
-    'bones': 'walkway',
-    'magnet': 'piano',
-    'blinds': 'sidechest',
-    'rustybox': 'log',
-    'C4': 'den',
-    'win': 'winladder',
-    'machete': 'lab',
-    'corks': 'garage',
-    'vaultcode': 'base',
-    'tile': 'den',
-    'observeflow': 'walkway',
-    'killswitch': 'briefcase',
-    'garageaccess': 'walkway',
-    'shovel': 'lhbottom',
-    'statue1': 'shore',
-    'plunger': 'garage',
-    'net': 'log',
-    'plans': 'terminal',
-    'poolaccess': 'den',
-    'spring': 'towerfence',
-    'emptynest': 'log',
-    'lightbulb': 'garage',
-    'cellphone': 'piano',
-}
+C4:den
+account:drawer
+ammo:vault
+arrowcode:spyroom
+battery:lhbottom
+beehive:waterfall
+blinds:sidechest
+blue11:shoebox
+blue12:clippingsbox
+blue21:towerfence
+blue22:bush
+blue31:b1
+blue32:office
+blue33:upstairs
+blue41:bedroom
+blue42:crossroad
+blue51:b1
+blue52:towerfence
+boltcutters:sub
+bones:walkway
+brick:brickwall
+bunsenhose:towerutil
+cardbox:base
+cd:toolbox
+heartkey:poolside
+towercard:observatory
+cell1:rightsocket
+cell2:spyroom
+cell3:spyroom
+cell4:rightpanel
+cellphone:piano
+cheese:tvroom
+chip:leftsocket
+chisel:grate
+circlecode:engine
+clearance1:security1
+clearance2:security2
+clearance3:security3
+clearance4:security4
+clearance5:security5
+clockdiamond:office
+clubkey:office
+code1:blueprint
+code2:blueprint
+code3:blueprint
+code4:blueprint
+code5:blueprint
+corks:garage
+crank:atrium
+crowbar:vault
+deskkey:lab
+diamondkey:fireplace
+dropnet:nest
+elevatoraccess:lhbottom
+emptycan:log
+emptynest:log
+fish:boat
+fullbattery:lab
+fullcan:log
+fullglass:bathroom
+fullpail:bathroom
+fuse:electric
+garageaccess:walkway
+gem1:vault
+gem2:cardbox
+gem3:vault
+gem4:nest
+gem5:beach
+glass:poolside
+glow1:leftsocket
+glow2:leftpanel
+glow3:brickwall
+glow4:bricksecret
+glow5:frontpanelup
+glow6:greeksecret
+goldkey:trevor5
+greenled:stoop
+hacking:upstairs
+hammer:garage
+killswitch:briefcase
+ladderlever:lhtop
+lens:bedroom
+lightbulb:garage
+lighter:fireplace
+machete:lab
+magnet:piano
+mailcard:walkway
+medal1:lhtop
+medal2:vault
+metalkey:atrium
+net:log
+observeflow:walkway
+oilcan:garage
+pail:lab
+pegboardplacement:traproom
+pegs:leftpanel
+pencil:briefcase
+pianoroll:upstairs
+plans:terminal
+plunger:garage
+poolaccess:den
+redkey:frontpaneldown
+redlock:frontpanelup
+reversefan:gantry
+rope:lhmid
+ruby:bedroom
+rustybox:log
+sabotagekit:lhtop
+scopecode:observatory
+screwdriver:office
+shovel:lhbottom
+siphonhose:waterfall
+spadekey:gemroom
+spadekey:vault
+spring:towerfence
+squarecode:rightpanel
+starcrank:leftpanel
+statue1:shore
+statue2:log
+statuecode:lhbottom
+stopruby:finalbeach
+telescope:saferoom
+thumbdrive:mail
+tile:den
+toolkey:trevor5
+transmit:commpanel
+trianglekey:bathroom
+vaultcode:base
+vaultkey:gemroom
+visitstatue:crossroad
+vroom:boat
+waterhandle:poolside
+wateroff1:water
+wateroff2:water
+wateron1:water
+wateron2:water
+wedge10:poolside
+wedge11:poolside
+wedge12:poolside
+wedge1:atrium
+wedge2:observatory
+wedge3:poolfilter
+wedge4:poolside
+wedge5:drain
+wedge6:den
+wedge7:den
+wedge8:den
+wedge9:den
+win:winladder
+yellowcube:observatory
