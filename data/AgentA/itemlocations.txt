@@ -146,5 +146,6 @@ wedge6:den
 wedge7:den
 wedge8:den
 wedge9:den
-win:winladder
+end:winladder
 yellowcube:observatory
+start:approach

@@ -32,7 +32,10 @@ digraph dependencies {
         circlecode->cell3;
         squarecode->cell3;
         greenled->cellphone;
+        cellphone->bombset;
         cd->clearance1;
+        bombset->detonate;
+        detonate->traproom;
         cd->clearance2;
         cd->clearance3;
         cd->clearance4;
@@ -141,6 +144,7 @@ digraph dependencies {
         fullcan->vroom;
         yellowcube->wedge1;
         trianglekey->wedge6;
-        winladder->win;
         stopruby->winladder;
+        C4->bombset;
+
 }

@@ -101,6 +101,7 @@ strict digraph AgentA {
         towernear->security2;
         towernear->towerfence;
         traproom->brickwall;
+        poolside->traproom[dir=forward];
         traproom->frontpanelup;
         traproom->pedestal;
         traproom->trevor1;
