@@ -45,8 +45,8 @@ def main(unused_argv):
         '\n'.join(f'  {it}' for it in sorted(unplaced_items)))
   unknown_locations = set(where.values()) - locations
   if unknown_locations:
-    raise ValueError("The following locations aren't on the map:\n" + '\n'.join(
-        f'  {l}' for l in sorted(unknown_locations)))
+    raise ValueError("The following locations aren't on the map:\n" +
+                     '\n'.join(f'  {l}' for l in sorted(unknown_locations)))
 
   items = list(items)
   start = items.index('start')
@@ -82,8 +82,10 @@ def main(unused_argv):
         pdb.post_mortem()
 
   tour = elkai.solve_int_matrix(costs)
-  for index in tour:
-    print(items[index])
+  for index, prev in zip(tour[1:], tour):
+    print(
+        f'Go {costs[prev, index]} steps to {where[items[index]]} and get {items[index]}.'
+    )
 
 
 if __name__ == '__main__':
