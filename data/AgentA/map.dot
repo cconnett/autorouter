@@ -1,14 +1,14 @@
 strict digraph AgentA {
         edge[dir=both,arrowhead=none,arrowtail=none];
 
-        SOC->atrium;
+        SOC->atrium[weight=2];
         SOC->base;
         SOC->security1;
         approach->stoop;
         approach->utilities;
         atrium->den;
         atrium->upstairs;
-        b1->cardbox;
+        base->cardbox;
         b1->gemroom;
         b1->lair;
         b2->cove;
@@ -22,6 +22,7 @@ strict digraph AgentA {
         beach->vines;
         beach->waterfall;
         bedroom->observatory;
+        observatory->tripod;
         boat->shore;
         boat->waterfall;
         breakablewall->toolbox;
@@ -41,8 +42,8 @@ strict digraph AgentA {
         desk->drawer;
         desk->terminal;
         fanpanel->gantry;
-        frontpaneldown->traproom[dir=forward,arrowhead=arrow];
-        frontpanelup->spyroom[dir=forward,arrowhead=arrow];
+        frontpaneldown->traproom[dir=forward];
+        frontpanelup->spyroom[dir=forward];
         grate->engine;
         lab->bunsen;
         lab->security5;
@@ -94,9 +95,9 @@ strict digraph AgentA {
         towerfence->towerladder1;
         towerladder1->towerladder2;
         towerladder2->towerutil;
+        towerladder2->towerladder3;
         towerladder3->cable;
         towerladder3->dish;
-        towerladder3->towerladder2;
         towernear->commpanel;
         towernear->security2;
         towernear->towerfence;
@@ -106,17 +107,17 @@ strict digraph AgentA {
         traproom->pedestal;
         traproom->trevor1;
         traproom->trevor2;
-        tvroom->SOC;
+        tvroom->SOC[weight=2];
         upstairs->bathroom;
         upstairs->bedroom;
         upstairs->office;
         utilities->electric;
-        utilities->mail;
+        utilities->mailbox;
         utilities->water;
         vent1->vent2;
         vent2->fanpanel;
         vent2->vent3;
-        vent3->tvroom;
+        vent3->SOC;
         walkway->drain;
         walkway->garage;
         waterfall->sub;
