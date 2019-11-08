@@ -159,7 +159,7 @@ strict digraph dependencies {
         waterhandle->wateron2;
         waterhandle->wateroff1;
         waterhandle->wateroff2;
+        cell4->{glow1 glow2 glow3 glow4 glow5 glow6}
         trafficsolve->fuse;
-        magnet->metalkey;
         winladder->stopruby;
 }

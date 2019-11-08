@@ -75,11 +75,11 @@ glow3:brickwall
 glow4:bricksecret
 glow5:frontpanelup
 glow6:greeksecret
-goldkey:trevor5
+goldkey:trevor4
 greenled:stoop
 hacking:upstairs
 hammer:garage
-heartkey:poolside
+heartkey:gemroom
 killswitch:briefcase
 ladderlever:lhtop
 lens:bedroom
@@ -113,7 +113,6 @@ scopecode:tripod
 screwdriver:office
 shovel:lhbottom
 siphonhose:waterfall
-spadekey:gemroom
 spadekey:vault
 spring:towerfence
 squarecode:rightpanel
