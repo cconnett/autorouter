@@ -34,6 +34,8 @@ TSP solver will give an optimal or near-optimal result.
 
 ## Tools
 
+Status: Still in early development.
+
 ### Autorouter
 
 The main tool in this project is Autorouter itself. This tool needs as input — a
