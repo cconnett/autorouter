@@ -1,0 +1,3 @@
+PROBLEM_FILE=agenta.sop
+RUNS = 10
+OUTPUT_TOUR_FILE=fast$.tour
