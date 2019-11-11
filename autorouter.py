@@ -4,7 +4,6 @@
 import sys
 
 from absl import app
-import elkai
 import networkx
 import numpy as np
 
@@ -29,7 +28,21 @@ def LoadMap():
   return themap
 
 
-def Validate(items, where, locations):
+def Validate(items, where, locations) -> None:
+  """Validate sane data.
+
+  Validate that all items have a location, that all locations with items are on
+  the map, and that the sets of locations and items don't intersect.
+
+  Args:
+    items: set of items
+    where: mapping of items to locations
+    locations: set of locations
+
+  Raises:
+    ValueError: if any conditions are violated.
+  """
+
   unplaced_items = items - set(where.keys())
   if unplaced_items:
     raise ValueError(
@@ -37,9 +50,11 @@ def Validate(items, where, locations):
         '\n'.join(f'  {it}' for it in sorted(unplaced_items)))
   unknown_locations = set(where.values()) - locations
   if unknown_locations:
-    raise ValueError("The following locations aren't on the map:\n" + '\n'.join(
-        f'  {l}' for l in sorted(unknown_locations)))
-  assert not locations & where.keys(), locations & where.keys()
+    raise ValueError("The following locations aren't on the map:\n" +
+                     '\n'.join(f'  {l}' for l in sorted(unknown_locations)))
+  if locations & where.keys():
+    raise ValueError(
+        f'Some locations are also items: {locations & where.keys()}')
 
 
 def main(unused_argv):
@@ -62,8 +77,8 @@ def main(unused_argv):
   items[-1], items[end] = items[end], items[-1]
 
   apsp = dict(
-      networkx.algorithms.shortest_paths.weighted.
-      all_pairs_bellman_ford_path_length(
+      networkx.algorithms.shortest_paths.weighted
+      .all_pairs_bellman_ford_path_length(
           themap, weight=lambda _1, _2, attrs: int(attrs.get('weight', 1))))
   apsp_path = dict(
       networkx.algorithms.shortest_paths.weighted.all_pairs_bellman_ford_path(
@@ -78,6 +93,7 @@ def main(unused_argv):
       else:
         costs[i, j] = apsp[where[items[i]]][where[items[j]]]
   del i, j
+
   for item_i in items:
     blockable_locations_start_to_i = (
         set(apsp_path[where['start']][where[item_i]]) & blocking_locations)
@@ -85,14 +101,15 @@ def main(unused_argv):
       themap2 = themap.copy()
       themap2.remove_node(block)
       try:
-        # Check if a path still exists.
+        # Check if a path *from start* still exists.  This is not always the
+        # correct path to check for; it would be more correct to check for a
+        # path from a reasonable spawn point to item_i.
         if where[item_i] == block:
           raise networkx.NetworkXNoPath
         networkx.algorithms.shortest_paths.generic.shortest_path(
             themap2, where['start'], where[item_i])
       except networkx.NetworkXNoPath:
         for requirement in dependencies[block]:
-          # print(f'start->{item_i} needs {requirement} because it blocks {block}')
           dependencies.add_edge(item_i, requirement)
 
   item_precedence = dict(networkx.all_pairs_shortest_path_length(dependencies))
@@ -100,7 +117,6 @@ def main(unused_argv):
     if item_i not in items:
       continue
     for item_j in item_precedence[item_i]:
-      # print(f'Cannot go from {item_i} to {item_j}.')
       costs[items.index(item_i), items.index(item_j)] = -1
 
   if len(sys.argv) == 1:
@@ -120,8 +136,9 @@ def main(unused_argv):
     tour = [int(node) - 1 for node in tourdata[6:6 + len(items)]]
     for index, prev in zip(tour[1:], tour):
       print(
-        f'Go {costs[prev, index]} steps to {where[items[index]]} and get {items[index]}.'
+          f'Go {costs[prev, index]} steps to {where[items[index]]} and get {items[index]}.'
       )
+
 
 if __name__ == '__main__':
   app.run(main)
